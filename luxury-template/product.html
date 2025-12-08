@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - MAISON</title>
+    
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#0a0a0a',
+                        gold: '#d4af37',
+                        'gold-light': '#f3e5ab',
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body class="bg-dark text-gray-200 antialiased selection:bg-gold selection:text-dark">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-dark/80 backdrop-blur-md border-b border-white/5 transition-all duration-500" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="flex justify-between items-center h-24">
+                
+                <!-- Mobile Menu -->
+                <button class="md:hidden text-white hover:text-gold transition-colors">
+                    <i class="ph ph-list text-2xl"></i>
+                </button>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-12">
+                    <a href="index.html" class="text-xs uppercase tracking-[0.2em] text-gray-400 hover:text-gold transition-colors">Home</a>
+                    <a href="shop.html" class="text-xs uppercase tracking-[0.2em] text-gray-400 hover:text-gold transition-colors">Collection</a>
+                </div>
+
+                <!-- Logo -->
+                <a href="index.html" class="text-3xl font-serif font-bold text-white tracking-widest absolute left-1/2 transform -translate-x-1/2">
+                    MAISON
+                </a>
+
+                <!-- Icons -->
+                <div class="flex items-center gap-8">
+                    <button class="text-gray-400 hover:text-gold transition-colors">
+                        <i class="ph ph-magnifying-glass text-xl"></i>
+                    </button>
+                    <a href="cart.html" class="text-gray-400 hover:text-gold transition-colors relative group">
+                        <i class="ph ph-shopping-bag text-xl"></i>
+                        <span id="cart-count" class="absolute -top-2 -right-2 w-4 h-4 bg-gold text-dark text-[10px] font-bold flex items-center justify-center rounded-full transform scale-0 group-hover:scale-110 transition-transform">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="min-h-screen flex items-stretch pt-24">
+        
+        <div class="w-full flex flex-col lg:flex-row">
+            
+            <!-- Product Image (Split Screen Left) -->
+            <div class="w-full lg:w-1/2 h-[50vh] lg:h-auto relative bg-[#111]">
+                <img id="product-image" src="" alt="Product Image" class="w-full h-full object-cover opacity-90" onerror="this.onerror=null; this.src='https://placehold.co/600x800?text=No+Image';">
+                <div class="absolute inset-0 bg-gradient-to-r from-transparent to-dark/20 pointer-events-none"></div>
+            </div>
+
+            <!-- Product Details (Split Screen Right) -->
+            <div class="w-full lg:w-1/2 flex items-center justify-center p-8 lg:p-20 bg-dark">
+                <div class="max-w-lg w-full animate-fade-up">
+                    
+                    <nav class="flex mb-10 text-xs uppercase tracking-widest text-gray-500">
+                        <a href="index.html" class="hover:text-gold transition-colors">Home</a>
+                        <span class="mx-3">/</span>
+                        <a href="shop.html" class="hover:text-gold transition-colors">Collection</a>
+                        <span class="mx-3">/</span>
+                        <span class="text-white" id="breadcrumb-name">Product Name</span>
+                    </nav>
+
+                    <div id="product-badges" class="flex gap-2 mb-4"></div>
+                    <div class="mb-4">
+                        <span id="product-category" class="text-gold text-xs uppercase tracking-[0.3em]">Category</span>
+                    </div>
+                    
+                    <h1 id="product-name" class="text-4xl md:text-5xl font-serif text-white mb-6 leading-tight">Product Name</h1>
+                    
+                    <div class="text-2xl font-light text-white mb-8 font-serif" id="product-price">$0.00</div>
+
+                    <p id="product-description" class="text-gray-400 leading-relaxed mb-12 font-light">
+                        Description goes here...
+                    </p>
+
+                    <div class="space-y-8">
+                        <!-- Quantity -->
+                        <div class="flex items-center gap-6">
+                            <span class="text-xs uppercase tracking-widest text-gray-500">Quantity</span>
+                            <div class="flex items-center border border-gray-800">
+                                <button onclick="updateQty(-1)" class="w-12 h-12 flex items-center justify-center hover:bg-white/5 text-gray-400 transition-colors"><i class="ph ph-minus"></i></button>
+                                <input type="number" id="qty-input" value="1" min="1" class="w-12 text-center bg-transparent border-none focus:ring-0 p-0 text-white font-serif">
+                                <button onclick="updateQty(1)" class="w-12 h-12 flex items-center justify-center hover:bg-white/5 text-gray-400 transition-colors"><i class="ph ph-plus"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- Actions -->
+                        <div class="flex gap-4 pt-4 border-t border-white/5">
+                            <button id="add-to-cart-btn" class="flex-1 bg-white text-dark py-4 uppercase tracking-widest text-xs font-bold hover:bg-gold hover:text-white transition-all duration-300">
+                                Add to Bag
+                            </button>
+                            <button class="w-14 border border-gray-800 flex items-center justify-center text-gray-400 hover:text-gold hover:border-gold transition-all duration-300">
+                                <i class="ph ph-heart text-xl"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Accordion Details -->
+                    <div class="mt-16 space-y-4">
+                        <div class="border-b border-white/5 pb-4">
+                            <button class="flex justify-between items-center w-full text-left group">
+                                <span class="text-xs uppercase tracking-widest text-gray-400 group-hover:text-white transition-colors">Details & Care</span>
+                                <i class="ph ph-plus text-gray-600 group-hover:text-gold"></i>
+                            </button>
+                        </div>
+                        <div class="border-b border-white/5 pb-4">
+                            <button class="flex justify-between items-center w-full text-left group">
+                                <span class="text-xs uppercase tracking-widest text-gray-400 group-hover:text-white transition-colors">Shipping & Returns</span>
+                                <i class="ph ph-plus text-gray-600 group-hover:text-gold"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        // Inline script for quantity logic specific to this page
+        function updateQty(change) {
+            const input = document.getElementById('qty-input');
+            let val = parseInt(input.value) + change;
+            if (val < 1) val = 1;
+            input.value = val;
+        }
+
+        // Product Image Zoom Logic
+        const container = document.querySelector('.lg\\:w-1\\/2.relative');
+        const img = document.getElementById('product-image');
+
+        if (container && img) {
+            container.style.overflow = 'hidden';
+            container.style.cursor = 'crosshair';
+
+            container.addEventListener('mousemove', function(e) {
+                const { left, top, width, height } = container.getBoundingClientRect();
+                const x = (e.clientX - left) / width * 100;
+                const y = (e.clientY - top) / height * 100;
+
+                img.style.transformOrigin = `${x}% ${y}%`;
+                img.style.transform = 'scale(2)';
+                img.style.transition = 'transform 0.1s ease-out'; // Smooth movement
+            });
+
+            container.addEventListener('mouseleave', function() {
+                img.style.transform = 'scale(1)';
+                img.style.transition = 'transform 0.3s ease-out'; // Smooth reset
+            });
+        }
+    </script>
+</body>
+</html>

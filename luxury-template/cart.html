@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Bag - MAISON</title>
+    
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#0a0a0a',
+                        gold: '#d4af37',
+                        'gold-light': '#f3e5ab',
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body class="bg-dark text-gray-200 antialiased selection:bg-gold selection:text-dark">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-dark/80 backdrop-blur-md border-b border-white/5 transition-all duration-500" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="flex justify-between items-center h-24">
+                
+                <!-- Mobile Menu -->
+                <button class="md:hidden text-white hover:text-gold transition-colors">
+                    <i class="ph ph-list text-2xl"></i>
+                </button>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-12">
+                    <a href="index.html" class="text-xs uppercase tracking-[0.2em] text-gray-400 hover:text-gold transition-colors">Home</a>
+                    <a href="shop.html" class="text-xs uppercase tracking-[0.2em] text-gray-400 hover:text-gold transition-colors">Collection</a>
+                </div>
+
+                <!-- Logo -->
+                <a href="index.html" class="text-3xl font-serif font-bold text-white tracking-widest absolute left-1/2 transform -translate-x-1/2">
+                    MAISON
+                </a>
+
+                <!-- Icons -->
+                <div class="flex items-center gap-8">
+                    <button class="text-gray-400 hover:text-gold transition-colors">
+                        <i class="ph ph-magnifying-glass text-xl"></i>
+                    </button>
+                    <a href="cart.html" class="text-gold hover:text-white transition-colors relative group">
+                        <i class="ph ph-shopping-bag text-xl"></i>
+                        <span id="cart-count" class="absolute -top-2 -right-2 w-4 h-4 bg-gold text-dark text-[10px] font-bold flex items-center justify-center rounded-full transform scale-0 group-hover:scale-110 transition-transform">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-32 min-h-screen">
+        
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 py-12">
+            <h1 class="text-4xl font-serif text-white mb-12 text-center">Shopping Bag</h1>
+
+            <div class="flex flex-col lg:flex-row gap-16">
+                
+                <!-- Cart Items -->
+                <div class="flex-1">
+                    <div id="cart-items" class="space-y-8">
+                        <!-- Items injected via JS -->
+                    </div>
+                    
+                    <!-- Empty State -->
+                    <div id="cart-empty" class="hidden text-center py-20 border border-white/5 bg-white/5">
+                        <div class="text-gold text-4xl mb-4 font-serif italic">Your bag is empty</div>
+                        <a href="shop.html" class="inline-block mt-6 px-8 py-3 border border-gold text-gold hover:bg-gold hover:text-dark transition-all uppercase tracking-widest text-xs font-bold">
+                            Continue Shopping
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Summary -->
+                <div class="w-full lg:w-96 flex-shrink-0">
+                    <div class="bg-[#111] p-10 border border-white/5 sticky top-32">
+                        <h2 class="text-xl font-serif text-white mb-8">Order Summary</h2>
+                        
+                        <div class="space-y-6 mb-8 text-sm font-light">
+                            <div class="flex justify-between text-gray-400">
+                                <span>Subtotal</span>
+                                <span id="cart-subtotal" class="text-white">$0.00</span>
+                            </div>
+                            <div class="flex justify-between text-gray-400">
+                                <span>Shipping</span>
+                                <span class="text-white">Complimentary</span>
+                            </div>
+                            <div class="flex justify-between text-gray-400">
+                                <span>Tax</span>
+                                <span class="text-white">$0.00</span>
+                            </div>
+                        </div>
+
+                        <div class="border-t border-white/10 pt-6 mb-10">
+                            <div class="flex justify-between items-end">
+                                <span class="text-gold uppercase tracking-widest text-xs">Total</span>
+                                <span id="cart-total" class="text-2xl font-serif text-white">$0.00</span>
+                            </div>
+                        </div>
+
+                        <a href="checkout.html" id="checkout-btn" class="block w-full bg-white text-dark py-4 uppercase tracking-widest text-xs font-bold text-center hover:bg-gold hover:text-white transition-all duration-300">
+                            Proceed to Checkout
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark border-t border-white/5 pt-20 pb-10 mt-20">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
+                <div class="col-span-1 md:col-span-1">
+                    <a href="index.html" class="text-2xl font-serif font-bold text-white tracking-widest block mb-8">MAISON</a>
+                    <p class="text-gray-500 text-sm leading-relaxed font-light">
+                        Redefining luxury for the modern era. Crafted with passion, designed for eternity.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-xs uppercase tracking-widest text-white mb-8">Boutique</h4>
+                    <ul class="space-y-4 text-sm text-gray-500 font-light">
+                        <li><a href="#" class="hover:text-gold transition-colors">New Arrivals</a></li>
+                        <li><a href="#" class="hover:text-gold transition-colors">Best Sellers</a></li>
+                        <li><a href="#" class="hover:text-gold transition-colors">Accessories</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xs uppercase tracking-widest text-white mb-8">Client Services</h4>
+                    <ul class="space-y-4 text-sm text-gray-500 font-light">
+                        <li><a href="#" class="hover:text-gold transition-colors">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-gold transition-colors">Shipping & Returns</a></li>
+                        <li><a href="#" class="hover:text-gold transition-colors">Size Guide</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xs uppercase tracking-widest text-white mb-8">Social</h4>
+                    <div class="flex gap-6 text-gray-500">
+                        <a href="#" class="hover:text-gold transition-colors"><i class="ph ph-instagram-logo text-xl"></i></a>
+                        <a href="#" class="hover:text-gold transition-colors"><i class="ph ph-facebook-logo text-xl"></i></a>
+                        <a href="#" class="hover:text-gold transition-colors"><i class="ph ph-pinterest-logo text-xl"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-white/5 pt-10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-600 uppercase tracking-wider">
+                <p>© 2024 MAISON. All rights reserved.</p>
+                <div class="flex gap-8">
+                    <a href="#" class="hover:text-gray-400">Privacy Policy</a>
+                    <a href="#" class="hover:text-gray-400">Terms of Use</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/app.js"></script>
+    
+    <!-- Override Init Cart Page for Luxury Styling -->
+    <script>
+        // We need to override initCartPage to render the items with the luxury HTML structure
+        // Since we can't easily override just the innerHTML part of the original function, we'll redefine it.
+        // This is a trade-off for reusing the exact same app.js file.
+        
+        initCartPage = function(products) {
+            const container = document.getElementById('cart-items');
+            const emptyState = document.getElementById('cart-empty');
+            const subtotalEl = document.getElementById('cart-subtotal');
+            const totalEl = document.getElementById('cart-total');
+            const checkoutBtn = document.getElementById('checkout-btn');
+
+            const cartItems = Cart.getCart();
+
+            if (cartItems.length === 0) {
+                container.innerHTML = '';
+                container.classList.add('hidden');
+                emptyState.classList.remove('hidden');
+                subtotalEl.textContent = '$0.00';
+                totalEl.textContent = '$0.00';
+                checkoutBtn.classList.add('opacity-50', 'pointer-events-none');
+                return;
+            }
+
+            container.classList.remove('hidden');
+            emptyState.classList.add('hidden');
+            checkoutBtn.classList.remove('opacity-50', 'pointer-events-none');
+
+            // Render Items (Luxury Style)
+            container.innerHTML = cartItems.map(item => {
+                const product = products.find(p => p.id === item.productId);
+                if (!product) return '';
+                
+                return `
+                    <div class="flex flex-col sm:flex-row items-center gap-8 p-8 border border-white/5 bg-[#111] hover:border-gold/30 transition-colors">
+                        <div class="w-32 h-40 flex-shrink-0 overflow-hidden bg-gray-900">
+                            <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity">
+                        </div>
+                        
+                        <div class="flex-1 text-center sm:text-left">
+                            <div class="text-[10px] uppercase tracking-[0.2em] text-gray-500 mb-2">${product.category}</div>
+                            <h3 class="font-serif text-xl text-white mb-2">${product.name}</h3>
+                            <div class="text-gold font-light">${UI.formatPrice(product.price)}</div>
+                        </div>
+
+                        <div class="flex items-center gap-8">
+                            <div class="flex items-center border border-gray-800">
+                                <button onclick="Cart.updateQuantity(${product.id}, ${item.quantity - 1})" class="w-10 h-10 flex items-center justify-center hover:bg-white/5 text-gray-400 transition-colors"><i class="ph ph-minus"></i></button>
+                                <span class="w-12 text-center text-sm font-serif text-white">${item.quantity}</span>
+                                <button onclick="Cart.updateQuantity(${product.id}, ${item.quantity + 1})" class="w-10 h-10 flex items-center justify-center hover:bg-white/5 text-gray-400 transition-colors"><i class="ph ph-plus"></i></button>
+                            </div>
+                            <button onclick="Cart.removeItem(${product.id})" class="text-gray-600 hover:text-red-400 transition-colors">
+                                <span class="text-xs uppercase tracking-widest border-b border-transparent hover:border-red-400">Remove</span>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            // Update Totals
+            const total = Cart.getTotalPrice();
+            subtotalEl.textContent = UI.formatPrice(total);
+            totalEl.textContent = UI.formatPrice(total);
+        }
+    </script>
+</body>
+</html>

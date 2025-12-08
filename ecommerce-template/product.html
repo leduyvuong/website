@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - LuxeMarket</title>
+    
+    <!-- Google Fonts: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0f172a', // Slate 900
+                        accent: '#4f46e5', // Indigo 600
+                        'accent-hover': '#4338ca', // Indigo 700
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body class="bg-gray-50 text-slate-800 antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center gap-2 group">
+                    <div class="w-10 h-10 bg-primary text-white rounded-xl flex items-center justify-center text-xl font-bold group-hover:rotate-12 transition-transform">
+                        L
+                    </div>
+                    <span class="text-2xl font-bold text-primary tracking-tight">LuxeMarket</span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">Home</a>
+                    <a href="shop.html" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">Shop</a>
+                    <a href="#" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">About</a>
+                    <a href="#" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">Contact</a>
+                </div>
+
+                <!-- Icons -->
+                <div class="flex items-center gap-4">
+                    <button class="p-2 text-gray-500 hover:text-primary transition-colors">
+                        <i class="ph ph-magnifying-glass text-xl"></i>
+                    </button>
+                    <a href="cart.html" class="p-2 text-gray-500 hover:text-primary transition-colors relative group">
+                        <i class="ph ph-shopping-cart text-xl"></i>
+                        <span id="cart-count" class="absolute top-0 right-0 w-5 h-5 bg-accent text-white text-[10px] font-bold flex items-center justify-center rounded-full border-2 border-white transform scale-0 group-hover:scale-110 transition-transform">0</span>
+                    </a>
+                    <button class="md:hidden p-2 text-gray-500 hover:text-primary transition-colors">
+                        <i class="ph ph-list text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-20 min-h-screen flex items-center">
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
+            
+            <!-- Breadcrumbs -->
+            <nav class="flex mb-8 text-sm text-gray-500">
+                <a href="index.html" class="hover:text-primary">Home</a>
+                <span class="mx-2">/</span>
+                <a href="shop.html" class="hover:text-primary">Shop</a>
+                <span class="mx-2">/</span>
+                <span class="text-primary font-medium" id="breadcrumb-name">Product Name</span>
+            </nav>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
+                
+                <!-- Image Gallery -->
+                <div class="space-y-4">
+                    <div class="aspect-[4/5] rounded-2xl overflow-hidden bg-gray-100 relative group">
+                        <img id="product-image" src="" alt="Product Image" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors"></div>
+                    </div>
+                </div>
+
+                <!-- Product Info -->
+                <div class="flex flex-col justify-center">
+                    <div id="product-badges" class="flex gap-2 mb-2"></div>
+                    <div class="mb-2">
+                        <span id="product-category" class="text-accent font-bold uppercase tracking-wider text-sm">Category</span>
+                    </div>
+                    <h1 id="product-name" class="text-4xl md:text-5xl font-bold text-primary mb-4 leading-tight">Product Name</h1>
+                    
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="flex text-yellow-400 text-lg">
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                        </div>
+                        <span class="text-gray-400 text-sm">(24 reviews)</span>
+                    </div>
+
+                    <div class="text-3xl font-bold text-primary mb-8" id="product-price">$0.00</div>
+
+                    <p id="product-description" class="text-gray-500 leading-relaxed mb-10 text-lg">
+                        Description goes here...
+                    </p>
+
+                    <div class="space-y-6">
+                        <!-- Quantity -->
+                        <div class="flex items-center gap-4">
+                            <span class="font-bold text-primary">Quantity</span>
+                            <div class="flex items-center border border-gray-200 rounded-lg">
+                                <button onclick="updateQty(-1)" class="w-10 h-10 flex items-center justify-center hover:bg-gray-50 text-gray-500 transition-colors"><i class="ph ph-minus"></i></button>
+                                <input type="number" id="qty-input" value="1" min="1" class="w-12 text-center border-none focus:ring-0 p-0 text-primary font-bold">
+                                <button onclick="updateQty(1)" class="w-10 h-10 flex items-center justify-center hover:bg-gray-50 text-gray-500 transition-colors"><i class="ph ph-plus"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- Actions -->
+                        <div class="flex gap-4">
+                            <button id="add-to-cart-btn" class="flex-1 bg-primary text-white py-4 rounded-xl font-bold hover:bg-primary/90 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                                <i class="ph ph-shopping-bag text-xl"></i> Add to Cart
+                            </button>
+                            <button class="w-14 h-14 border border-gray-200 rounded-xl flex items-center justify-center text-gray-400 hover:text-red-500 hover:border-red-200 hover:bg-red-50 transition-all">
+                                <i class="ph ph-heart text-2xl"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Features -->
+                    <div class="grid grid-cols-2 gap-4 mt-12 pt-12 border-t border-gray-100">
+                        <div class="flex items-center gap-3">
+                            <i class="ph ph-truck text-2xl text-accent"></i>
+                            <span class="text-sm font-medium text-gray-600">Free Delivery</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="ph ph-arrow-counter-clockwise text-2xl text-accent"></i>
+                            <span class="text-sm font-medium text-gray-600">30 Days Return</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-100 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-1">
+                    <a href="index.html" class="flex items-center gap-2 mb-6">
+                        <div class="w-8 h-8 bg-primary text-white rounded-lg flex items-center justify-center text-lg font-bold">L</div>
+                        <span class="text-xl font-bold text-primary">LuxeMarket</span>
+                    </a>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        Premium e-commerce template built with HTML & Tailwind CSS. Designed for modern brands.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-primary mb-6">Shop</h4>
+                    <ul class="space-y-4 text-sm text-gray-500">
+                        <li><a href="#" class="hover:text-accent transition-colors">All Products</a></li>
+                        <li><a href="#" class="hover:text-accent transition-colors">Featured</a></li>
+                        <li><a href="#" class="hover:text-accent transition-colors">New Arrivals</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-primary mb-6">Support</h4>
+                    <ul class="space-y-4 text-sm text-gray-500">
+                        <li><a href="#" class="hover:text-accent transition-colors">FAQ</a></li>
+                        <li><a href="#" class="hover:text-accent transition-colors">Shipping & Returns</a></li>
+                        <li><a href="#" class="hover:text-accent transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-primary mb-6">Newsletter</h4>
+                    <p class="text-sm text-gray-500 mb-4">Subscribe to get special offers and updates.</p>
+                    <form class="flex gap-2">
+                        <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-accent text-sm">
+                        <button type="button" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">Join</button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-sm text-gray-400">© 2024 LuxeMarket. All rights reserved.</p>
+                <div class="flex gap-4 text-gray-400">
+                    <a href="#" class="hover:text-primary transition-colors"><i class="ph ph-instagram-logo text-xl"></i></a>
+                    <a href="#" class="hover:text-primary transition-colors"><i class="ph ph-twitter-logo text-xl"></i></a>
+                    <a href="#" class="hover:text-primary transition-colors"><i class="ph ph-facebook-logo text-xl"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        // Inline script for quantity logic specific to this page
+        function updateQty(change) {
+            const input = document.getElementById('qty-input');
+            let val = parseInt(input.value) + change;
+            if (val < 1) val = 1;
+            input.value = val;
+        }
+    </script>
+</body>
+</html>

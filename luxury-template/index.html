@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAISON - Luxury E-commerce</title>
+    
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#0a0a0a',
+                        gold: '#d4af37',
+                        'gold-light': '#f3e5ab',
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body class="bg-dark text-gray-200 antialiased selection:bg-gold selection:text-dark">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-dark/80 backdrop-blur-md border-b border-white/5 transition-all duration-500" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="flex justify-between items-center h-24">
+                
+                <!-- Mobile Menu -->
+                <button class="md:hidden text-white hover:text-gold transition-colors">
+                    <i class="ph ph-list text-2xl"></i>
+                </button>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-12">
+                    <a href="index.html" class="text-xs uppercase tracking-[0.2em] text-gray-400 hover:text-gold transition-colors">Home</a>
+                    <a href="shop.html" class="text-xs uppercase tracking-[0.2em] text-gray-400 hover:text-gold transition-colors">Collection</a>
+                    <a href="login.html" class="text-xs uppercase tracking-[0.2em] text-gray-400 hover:text-gold transition-colors">Login</a>
+                </div>
+
+                <!-- Logo -->
+                <a href="index.html" class="text-3xl font-serif font-bold text-white tracking-widest absolute left-1/2 transform -translate-x-1/2">
+                    MAISON
+                </a>
+
+                <!-- Icons -->
+                <div class="flex items-center gap-8">
+                    <button class="text-gray-400 hover:text-gold transition-colors">
+                        <i class="ph ph-magnifying-glass text-xl"></i>
+                    </button>
+                    <a href="cart.html" class="text-gray-400 hover:text-gold transition-colors relative group">
+                        <i class="ph ph-shopping-bag text-xl"></i>
+                        <span id="cart-count" class="absolute -top-2 -right-2 w-4 h-4 bg-gold text-dark text-[10px] font-bold flex items-center justify-center rounded-full transform scale-0 group-hover:scale-110 transition-transform">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        
+        <!-- Hero Section -->
+        <section class="relative h-screen flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=1950&q=80" alt="Luxury Fashion" class="w-full h-full object-cover opacity-40">
+                <div class="absolute inset-0 bg-gradient-to-t from-dark via-transparent to-dark/50"></div>
+            </div>
+            
+            <div class="relative z-10 text-center px-4 animate-fade-up">
+                <p class="text-gold text-xs uppercase tracking-[0.3em] mb-6">Spring Summer 2024</p>
+                <h1 class="text-6xl md:text-8xl font-serif text-white mb-8 leading-tight">
+                    Timeless <br/> <span class="italic text-gold">Elegance</span>
+                </h1>
+                <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
+                    <a href="shop.html" class="px-10 py-4 border border-gold text-gold hover:bg-gold hover:text-dark transition-all duration-500 uppercase tracking-widest text-xs font-bold">
+                        Explore Collection
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Philosophy -->
+        <section class="py-32 bg-dark relative">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <span class="text-gold text-5xl font-serif block mb-8">"</span>
+                <p class="text-2xl md:text-3xl font-serif text-gray-300 leading-relaxed mb-8">
+                    Luxury is in each detail. It is the quality of the material, the precision of the cut, and the story behind the creation.
+                </p>
+                <div class="w-20 h-[1px] bg-gold mx-auto"></div>
+            </div>
+        </section>
+
+        <!-- Curated Selection -->
+        <section class="py-32 bg-dark">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-20">
+                    <div class="animate-fade-up">
+                        <span class="text-gold text-xs uppercase tracking-[0.3em] mb-4 block">Collection</span>
+                        <h2 class="text-4xl md:text-5xl font-serif text-white">Curated Selection</h2>
+                    </div>
+                    <a href="shop.html" class="hidden md:inline-block text-white border-b border-gold pb-1 hover:text-gold transition-colors uppercase tracking-widest text-xs mt-8 md:mt-0">
+                        View All Products
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16" id="featured-products">
+                    <!-- Products injected via JS -->
+                </div>
+                
+                <div class="mt-16 text-center md:hidden">
+                    <a href="shop.html" class="inline-block text-white border-b border-gold pb-1 hover:text-gold transition-colors uppercase tracking-widest text-xs">
+                        View All Products
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories -->
+        <section class="py-32 bg-[#111]">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12">
+                <div class="text-center mb-20 animate-fade-up">
+                    <span class="text-gold text-xs uppercase tracking-[0.3em] mb-4 block">Discover</span>
+                    <h2 class="text-4xl md:text-5xl font-serif text-white">Shop by Category</h2>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="home-categories">
+                    <!-- Categories injected via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter -->
+        <section class="py-32 bg-[#0f0f0f] border-t border-white/5">
+            <div class="max-w-2xl mx-auto px-6 text-center">
+                <h2 class="text-3xl font-serif text-white mb-4">Join the Inner Circle</h2>
+                <p class="text-gray-500 mb-10 font-light">Subscribe to receive exclusive offers and private event invitations.</p>
+                <form class="flex border-b border-white/20 pb-2">
+                    <input type="email" placeholder="Email Address" class="flex-1 bg-transparent text-white placeholder-gray-600 focus:outline-none font-serif text-lg">
+                    <button type="button" class="text-xs uppercase tracking-widest text-gold hover:text-white transition-colors">Subscribe</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark border-t border-white/5 pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
+                <div class="col-span-1 md:col-span-1">
+                    <a href="index.html" class="text-2xl font-serif font-bold text-white tracking-widest block mb-8">MAISON</a>
+                    <p class="text-gray-500 text-sm leading-relaxed font-light">
+                        Redefining luxury for the modern era. Crafted with passion, designed for eternity.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-xs uppercase tracking-widest text-white mb-8">Boutique</h4>
+                    <ul class="space-y-4 text-sm text-gray-500 font-light">
+                        <li><a href="#" class="hover:text-gold transition-colors">New Arrivals</a></li>
+                        <li><a href="#" class="hover:text-gold transition-colors">Best Sellers</a></li>
+                        <li><a href="#" class="hover:text-gold transition-colors">Accessories</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xs uppercase tracking-widest text-white mb-8">Client Services</h4>
+                    <ul class="space-y-4 text-sm text-gray-500 font-light">
+                        <li><a href="#" class="hover:text-gold transition-colors">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-gold transition-colors">Shipping & Returns</a></li>
+                        <li><a href="#" class="hover:text-gold transition-colors">Size Guide</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xs uppercase tracking-widest text-white mb-8">Social</h4>
+                    <div class="flex gap-6 text-gray-500">
+                        <a href="#" class="hover:text-gold transition-colors"><i class="ph ph-instagram-logo text-xl"></i></a>
+                        <a href="#" class="hover:text-gold transition-colors"><i class="ph ph-facebook-logo text-xl"></i></a>
+                        <a href="#" class="hover:text-gold transition-colors"><i class="ph ph-pinterest-logo text-xl"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-white/5 pt-10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-600 uppercase tracking-wider">
+                <p>© 2024 MAISON. All rights reserved.</p>
+                <div class="flex gap-8">
+                    <a href="#" class="hover:text-gray-400">Privacy Policy</a>
+                    <a href="#" class="hover:text-gray-400">Terms of Use</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/app.js"></script>
+    
+    <!-- Override UI Helper for Luxury Theme -->
+    <script>
+        // Toast Notification Helper
+        const Toast = {
+            show(message, type = 'success') {
+                const toast = document.createElement('div');
+                toast.className = `fixed top-4 right-4 z-[110] px-6 py-4 bg-white text-dark shadow-2xl flex items-center gap-3 transform translate-x-full transition-transform duration-500 border-l-4 ${type === 'success' ? 'border-gold' : 'border-red-500'}`;
+                toast.innerHTML = `
+                    <i class="ph-fill ${type === 'success' ? 'ph-check-circle text-gold' : 'ph-warning-circle text-red-500'} text-xl"></i>
+                    <span class="font-bold uppercase tracking-wider text-xs">${message}</span>
+                `;
+                document.body.appendChild(toast);
+                
+                // Animate in
+                requestAnimationFrame(() => {
+                    toast.classList.remove('translate-x-full');
+                });
+
+                // Remove after 3s
+                setTimeout(() => {
+                    toast.classList.add('translate-x-full');
+                    setTimeout(() => toast.remove(), 500);
+                }, 3000);
+            }
+        };
+
+        // Override Cart.addItem to show Toast
+        const originalAddItem = Cart.addItem;
+        Cart.addItem = function(id, quantity = 1) {
+            originalAddItem.call(Cart, id, quantity);
+            Toast.show('Added to Bag');
+        };
+
+        // We override the createProductCard method to match the luxury design
+        UI.createProductCard = function(product) {
+            // Calculate discounted price
+            const discountedPrice = product.discount > 0 
+                ? product.price * (1 - product.discount / 100) 
+                : product.price;
+            
+            const priceHtml = product.discount > 0
+                ? `<span class="text-gold text-lg">$${discountedPrice.toFixed(2)}</span> <span class="text-gray-600 text-sm line-through ml-2">$${product.price.toFixed(2)}</span>`
+                : `<span class="text-gold text-lg">$${product.price.toFixed(2)}</span>`;
+
+            const badgesHtml = `
+                ${product.isHot ? '<span class="text-[10px] uppercase tracking-widest text-white bg-red-600 px-2 py-1 font-bold">Hot</span>' : ''}
+                ${product.discount > 0 ? `<span class="text-[10px] uppercase tracking-widest text-dark bg-gold px-2 py-1 font-bold">-${product.discount}%</span>` : ''}
+            `;
+
+            return `
+                <div class="group luxury-card">
+                    <div class="relative aspect-[3/4] overflow-hidden mb-6 group-hover:shadow-2xl transition-all duration-500">
+                        <img src="${product.image}" alt="${product.name}" 
+                            class="w-full h-full object-cover transform group-hover:scale-105 group-hover:grayscale-0 grayscale transition-all duration-700"
+                            onerror="this.onerror=null; this.src='https://placehold.co/600x800?text=No+Image';">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500"></div>
+                        
+                        <!-- Badges -->
+                        <div class="absolute top-4 left-4 flex flex-col gap-2">
+                            ${badgesHtml}
+                        </div>
+
+                        <!-- Quick View Button -->
+                        <button onclick="openQuickView(${product.id})" class="absolute bottom-0 left-0 w-full bg-white text-dark py-4 uppercase tracking-widest text-xs font-bold transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 hover:bg-gold hover:text-white z-20">
+                            Quick View
+                        </button>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-[10px] uppercase tracking-[0.2em] text-gray-500 mb-2">${product.category}</div>
+                        <h3 class="font-serif text-lg text-white mb-2 group-hover:text-gold transition-colors">
+                            <a href="product.html?id=${product.id}">${product.name}</a>
+                        </h3>
+                        <div class="flex items-center justify-center gap-3">
+                            ${priceHtml}
+                        </div>
+                    </div>
+                </div>
+            `;
+        };
+
+        // Quick View Logic
+        window.openQuickView = function(id) {
+            const product = window.mockProducts.find(p => p.id === id);
+            if (!product) return;
+
+            const modal = document.getElementById('quick-view-modal');
+            const content = document.getElementById('quick-view-content');
+            
+            // Calculate discounted price for modal
+            const discountedPrice = product.discount > 0 
+                ? product.price * (1 - product.discount / 100) 
+                : product.price;
+            
+            const priceDisplay = product.discount > 0
+                ? `<span class="text-gold text-3xl mr-4">$${discountedPrice.toFixed(2)}</span> <span class="text-gray-500 text-xl line-through">$${product.price.toFixed(2)}</span>`
+                : `<span class="text-gold text-3xl">$${product.price.toFixed(2)}</span>`;
+
+            content.innerHTML = `
+                <div class="flex flex-col lg:flex-row h-full">
+                    <div class="w-full lg:w-1/2 h-64 lg:h-full relative">
+                        <img src="${product.image}" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x800?text=No+Image';">
+                    </div>
+                    <div class="w-full lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center bg-[#111]">
+                        <h2 class="text-3xl font-serif font-bold text-white mb-4">${product.name}</h2>
+                        <div class="mb-6">${priceDisplay}</div>
+                        <p class="text-gray-400 mb-8 leading-relaxed">${product.description}</p>
+                        
+                        <div class="flex gap-4">
+                            <button onclick="Cart.addItem(${product.id}, 1); closeQuickView()" class="flex-1 py-4 bg-gold text-dark font-bold uppercase tracking-widest hover:bg-white transition-colors">
+                                Add to Cart
+                            </button>
+                            <a href="product.html?id=${product.id}" class="px-6 py-4 border border-gray-600 text-white hover:border-gold hover:text-gold transition-colors uppercase tracking-widest text-xs font-bold flex items-center">
+                                Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            modal.classList.remove('hidden');
+            // Small delay to allow display:block to apply before opacity transition
+            setTimeout(() => modal.classList.remove('opacity-0'), 10);
+        };
+
+        window.closeQuickView = function() {
+            const modal = document.getElementById('quick-view-modal');
+            modal.classList.add('opacity-0');
+            setTimeout(() => modal.classList.add('hidden'), 300);
+        };
+    </script>
+
+    <!-- Quick View Modal Container -->
+    <div id="quick-view-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeQuickView()"></div>
+        <div class="relative w-full max-w-4xl bg-[#111] shadow-2xl overflow-hidden animate-fade-up">
+            <button onclick="closeQuickView()" class="absolute top-4 right-4 text-white hover:text-gold z-10 bg-black/50 rounded-full p-2 transition-colors">
+                <i class="ph ph-x text-2xl"></i>
+            </button>
+            <div id="quick-view-content"></div>
+        </div>
+    </div>
+</body>
+</html>
