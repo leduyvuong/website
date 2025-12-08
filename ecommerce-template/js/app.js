@@ -60,6 +60,11 @@ function initializeApp() {
     if (document.getElementById('checkout-form')) {
         initCheckoutPage(data.products);
     }
+
+    // Render Profile Page
+    if (document.getElementById('order-history-body')) {
+        initProfilePage(data.products);
+    }
 }
 
 function renderHomePage(products) {
@@ -117,6 +122,34 @@ function initCheckoutPage(products) {
             btn.disabled = true;
 
             setTimeout(() => {
+                // Create Order Object
+                const cartItems = Cart.getCart();
+                const total = Cart.getTotalPrice();
+                const orderId = 'ORD-' + Math.floor(1000 + Math.random() * 9000); // Random ID
+                const date = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                
+                const newOrder = {
+                    id: orderId,
+                    date: date,
+                    status: 'Processing',
+                    total: total,
+                    items: cartItems
+                };
+
+                // Save to User's History (Mocking User ID 1)
+                const data = Storage.get();
+                if (data.users && data.users.length > 0) {
+                    // Find John Doe (ID 1)
+                    const userIndex = data.users.findIndex(u => u.id === 1);
+                    if (userIndex !== -1) {
+                        if (!data.users[userIndex].orders) {
+                            data.users[userIndex].orders = [];
+                        }
+                        data.users[userIndex].orders.unshift(newOrder); // Add to top
+                        Storage.save(data);
+                    }
+                }
+
                 Cart.clearCart();
                 document.getElementById('success-modal').classList.remove('hidden');
             }, 1500);
@@ -124,6 +157,99 @@ function initCheckoutPage(products) {
             form.reportValidity();
         }
     };
+}
+
+function initProfilePage(products) {
+    const orderContainer = document.getElementById('order-history-body');
+    if (!orderContainer) return;
+
+    const data = Storage.get();
+    // Default to User 1 (John Doe)
+    const user = data.users ? data.users.find(u => u.id === 1) : null;
+
+    if (!user || !user.orders || user.orders.length === 0) {
+        orderContainer.innerHTML = `
+            <tr>
+                <td colspan="5" class="py-8 text-center text-gray-500">No orders found.</td>
+            </tr>
+        `;
+        return;
+    }
+
+    // Check if Luxury Template
+    const isLuxury = window.location.href.includes('luxury-template') || document.body.classList.contains('bg-dark');
+
+    // Tab Switching Logic
+    const navAccount = document.getElementById('nav-account');
+    const navOrders = document.getElementById('nav-orders');
+    const sectionAccount = document.getElementById('section-account');
+    const sectionOrders = document.getElementById('section-orders');
+
+    if (navAccount && navOrders && sectionAccount && sectionOrders) {
+        navAccount.addEventListener('click', (e) => {
+            e.preventDefault();
+            // Update Active State
+            if (isLuxury) {
+                navAccount.className = 'flex items-center gap-4 px-4 py-4 bg-white/5 text-gold border-l-2 border-gold transition-all';
+                navOrders.className = 'flex items-center gap-4 px-4 py-4 text-gray-400 hover:text-white hover:bg-white/5 transition-all border-l-2 border-transparent hover:border-white/20';
+            } else {
+                navAccount.className = 'flex items-center gap-3 px-4 py-3 bg-primary text-white rounded-xl font-medium transition-colors';
+                navOrders.className = 'flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-xl font-medium transition-colors';
+            }
+            // Show Section
+            sectionAccount.classList.remove('hidden');
+            sectionOrders.classList.add('hidden');
+        });
+
+        navOrders.addEventListener('click', (e) => {
+            e.preventDefault();
+            // Update Active State
+            if (isLuxury) {
+                navOrders.className = 'flex items-center gap-4 px-4 py-4 bg-white/5 text-gold border-l-2 border-gold transition-all';
+                navAccount.className = 'flex items-center gap-4 px-4 py-4 text-gray-400 hover:text-white hover:bg-white/5 transition-all border-l-2 border-transparent hover:border-white/20';
+            } else {
+                navOrders.className = 'flex items-center gap-3 px-4 py-3 bg-primary text-white rounded-xl font-medium transition-colors';
+                navAccount.className = 'flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-xl font-medium transition-colors';
+            }
+            // Show Section
+            sectionOrders.classList.remove('hidden');
+            sectionAccount.classList.add('hidden');
+        });
+    }
+
+    orderContainer.innerHTML = user.orders.map(order => {
+        if (isLuxury) {
+            // Luxury Template Row
+            let statusColor = 'text-blue-400';
+            if (order.status === 'Delivered') statusColor = 'text-green-400';
+            if (order.status === 'Cancelled') statusColor = 'text-red-400';
+
+            return `
+                <tr class="border-b border-white/5 group hover:bg-white/[0.02] transition-colors">
+                    <td class="py-6 font-serif text-white">#${order.id}</td>
+                    <td class="py-6 text-gray-400">${order.date}</td>
+                    <td class="py-6"><span class="text-xs uppercase tracking-wider ${statusColor}">${order.status}</span></td>
+                    <td class="py-6 font-serif text-white">${UI.formatPrice(order.total)}</td>
+                    <td class="py-6 text-right"><button class="text-gold hover:text-white transition-colors text-xs uppercase tracking-widest">Details</button></td>
+                </tr>
+            `;
+        } else {
+            // Standard Template Row
+            let statusClass = 'bg-blue-100 text-blue-600';
+            if (order.status === 'Delivered') statusClass = 'bg-green-100 text-green-600';
+            if (order.status === 'Cancelled') statusClass = 'bg-red-100 text-red-600';
+
+            return `
+                <tr class="border-b border-gray-50 group hover:bg-gray-50 transition-colors">
+                    <td class="py-4 font-bold text-primary">#${order.id}</td>
+                    <td class="py-4 text-gray-500">${order.date}</td>
+                    <td class="py-4"><span class="px-3 py-1 ${statusClass} rounded-full text-xs font-bold">${order.status}</span></td>
+                    <td class="py-4 font-bold text-primary">${UI.formatPrice(order.total)}</td>
+                    <td class="py-4"><button class="text-accent font-bold hover:underline">View</button></td>
+                </tr>
+            `;
+        }
+    }).join('');
 }
 
 function initCartPage(products) {
