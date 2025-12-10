@@ -10,6 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize Cart UI
     Cart.updateCartUI();
+
+    // Initialize Mobile Menu
+    initMobileMenu();
 });
 
 function initializeApp() {
@@ -64,6 +67,24 @@ function initializeApp() {
     // Render Profile Page
     if (document.getElementById('order-history-body')) {
         initProfilePage(data.products);
+    }
+}
+
+function initMobileMenu() {
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const closeBtn = document.getElementById('close-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+
+    if (menuBtn && menu) {
+        menuBtn.addEventListener('click', () => {
+            menu.classList.remove('translate-x-full');
+        });
+    }
+
+    if (closeBtn && menu) {
+        closeBtn.addEventListener('click', () => {
+            menu.classList.add('translate-x-full');
+        });
     }
 }
 
