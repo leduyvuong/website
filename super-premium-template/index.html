@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Premium Store - Thời trang đẳng cấp</title>
+    <meta name="description" content="Khám phá bộ sưu tập thời trang cao cấp với thiết kế sang trọng và hiện đại.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="#">LUXE</a>
+            </div>
+            
+            <nav class="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="#" class="active">Trang chủ</a></li>
+                    <li><a href="products.html">Sản phẩm</a></li>
+                    <li><a href="#">Khuyến mãi</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Liên hệ</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <div class="search-bar">
+                    <input type="text" placeholder="Tìm kiếm...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                <a href="cart.html" class="action-icon cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cart-count" class="cart-count">0</span>
+                </a>
+                <a href="#" class="action-icon user-icon">
+                    <i class="fas fa-user"></i>
+                </a>
+                <div class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1 class="hero-title fade-in">KHÁM PHÁ COLLECTION MỚI</h1>
+            <p class="hero-subtitle fade-in delay-1">Thời trang chất lượng, giá hợp lý</p>
+            <a href="#" class="btn btn-primary hero-cta fade-in delay-2">MUA NGAY</a>
+        </div>
+    </section>
+
+    <!-- Category Showcase -->
+    <section class="categories section-padding">
+        <div class="container">
+            <h2 class="section-title">Danh Mục Nổi Bật</h2>
+            <div class="category-grid">
+                <div class="category-card">
+                    <div class="category-icon"><i class="fas fa-tshirt"></i></div>
+                    <h3>Nam</h3>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon"><i class="fas fa-female"></i></div>
+                    <h3>Nữ</h3>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon"><i class="fas fa-child"></i></div>
+                    <h3>Trẻ em</h3>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon"><i class="fas fa-hat-cowboy"></i></div>
+                    <h3>Phụ kiện</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured-products section-padding bg-light">
+        <div class="container">
+            <h2 class="section-title">Sản Phẩm Bán Chạy</h2>
+            <div class="product-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Áo Thun Premium">
+                        <button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Thêm vào giỏ</button>
+                    </div>
+                    <div class="product-info">
+                        <div class="rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                            <span>(4.8)</span>
+                        </div>
+                        <h3 class="product-name">Áo Thun Premium</h3>
+                        <div class="price-box">
+                            <span class="current-price">299.000₫</span>
+                            <span class="old-price">399.000₫</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Sơ Mi Công Sở">
+                        <button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Thêm vào giỏ</button>
+                    </div>
+                    <div class="product-info">
+                        <div class="rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <span>(5.0)</span>
+                        </div>
+                        <h3 class="product-name">Sơ Mi Công Sở</h3>
+                        <div class="price-box">
+                            <span class="current-price">450.000₫</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Giày Sneaker">
+                        <div class="badge sale">Sale</div>
+                        <button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Thêm vào giỏ</button>
+                    </div>
+                    <div class="product-info">
+                        <div class="rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                            <span>(4.2)</span>
+                        </div>
+                        <h3 class="product-name">Giày Sneaker</h3>
+                        <div class="price-box">
+                            <span class="current-price">1.200.000₫</span>
+                            <span class="old-price">1.500.000₫</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1539008835657-9e8e9680c956?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Váy Dạ Hội">
+                        <div class="badge new">Mới</div>
+                        <button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Thêm vào giỏ</button>
+                    </div>
+                    <div class="product-info">
+                        <div class="rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <span>(5.0)</span>
+                        </div>
+                        <h3 class="product-name">Váy Dạ Hội</h3>
+                        <div class="price-box">
+                            <span class="current-price">890.000₫</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <div class="text-center mt-4">
+                <a href="products.html" class="btn btn-outline">Xem Tất Cả Sản Phẩm</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promotional Banner -->
+    <section class="promo-banner section-padding">
+        <div class="container promo-content">
+            <h2 class="promo-title">GIẢM 30% CHỈ HÔM NAY!</h2>
+            <p class="promo-code">Mã: <strong>SALE30</strong></p>
+            <div class="countdown-timer" id="countdown">
+                <div class="time-block">
+                    <span id="hours">02</span>
+                    <span class="label">Giờ</span>
+                </div>
+                <div class="time-block">
+                    <span id="minutes">45</span>
+                    <span class="label">Phút</span>
+                </div>
+                <div class="time-block">
+                    <span id="seconds">32</span>
+                    <span class="label">Giây</span>
+                </div>
+            </div>
+            <a href="#" class="btn btn-primary mt-3">Săn Deal Ngay</a>
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="testimonials section-padding">
+        <div class="container">
+            <h2 class="section-title">Khách Hàng Nói Gì?</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="comment">"Sản phẩm tuyệt vời, chất lượng vải rất tốt. Giao hàng nhanh chóng!"</p>
+                    <div class="user-info">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User" onerror="this.onerror=null; this.src='https://placehold.co/100x100?text=User'">
+                        <span>Nguyễn Thị Lan</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="comment">"Tôi rất hài lòng với dịch vụ chăm sóc khách hàng. Sẽ ủng hộ dài dài."</p>
+                    <div class="user-info">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User" onerror="this.onerror=null; this.src='https://placehold.co/100x100?text=User'">
+                        <span>Trần Văn Minh</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="comment">"Mẫu mã đẹp, đúng như hình. Đóng gói cẩn thận."</p>
+                    <div class="user-info">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="User" onerror="this.onerror=null; this.src='https://placehold.co/100x100?text=User'">
+                        <span>Lê Thu Hà</span>
+                    </div>
+                </div>
+            </div>
+            <div class="trust-summary">
+                <p>⭐ <strong>4.8/5</strong> từ <strong>12,456</strong> đánh giá</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="features section-padding bg-light">
+        <div class="container feature-grid">
+            <div class="feature-item">
+                <i class="fas fa-shipping-fast"></i>
+                <h3>Giao Hàng Miễn Phí</h3>
+                <p>Cho đơn hàng từ 500k</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Bảo Hành Uy Tín</h3>
+                <p>Đổi trả trong 30 ngày</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-lock"></i>
+                <h3>Thanh Toán An Toàn</h3>
+                <p>Bảo mật thông tin tuyệt đối</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter section-padding">
+        <div class="container newsletter-content">
+            <h2>Nhận Khuyến Mãi Độc Quyền</h2>
+            <p>Đăng ký để không bỏ lỡ những ưu đãi hấp dẫn nhất.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Nhập email của bạn...">
+                <button type="submit" class="btn btn-primary">Đăng Ký</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h3>LUXE</h3>
+                <p>Thương hiệu thời trang cao cấp dành cho người Việt.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Liên Kết</h3>
+                <ul>
+                    <li><a href="#">Về chúng tôi</a></li>
+                    <li><a href="#">Chính sách đổi trả</a></li>
+                    <li><a href="#">Hướng dẫn chọn size</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Hỗ Trợ</h3>
+                <ul>
+                    <li><a href="#">Trung tâm trợ giúp</a></li>
+                    <li><a href="#">Liên hệ</a></li>
+                    <li><a href="#">Theo dõi đơn hàng</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Thanh Toán</h3>
+                <div class="payment-methods">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-paypal"></i>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 LUXE Store. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Tiết Sản Phẩm - Super Premium Store</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html">LUXE</a>
+            </div>
+            
+            <nav class="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="index.html">Trang chủ</a></li>
+                    <li><a href="products.html">Sản phẩm</a></li>
+                    <li><a href="#">Khuyến mãi</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Liên hệ</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <div class="search-bar">
+                    <input type="text" placeholder="Tìm kiếm...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                <a href="cart.html" class="action-icon cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cart-count">0</span>
+                </a>
+                <a href="login.html" class="action-icon user-icon">
+                    <i class="fas fa-user"></i>
+                </a>
+                <div class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb section-padding bg-light">
+        <div class="container">
+            <a href="index.html">Trang chủ</a> / <a href="products.html">Sản phẩm</a> / <span id="breadcrumb-name">Tên sản phẩm</span>
+        </div>
+    </div>
+
+    <!-- Product Detail -->
+    <section class="product-detail section-padding">
+        <div class="container product-detail-container">
+            <!-- Gallery -->
+            <div class="product-gallery">
+                <div class="main-image">
+                    <img id="product-image" src="" alt="Product Image">
+                </div>
+                <!-- Thumbnails can be added here -->
+            </div>
+
+            <!-- Info -->
+            <div class="product-info-detail">
+                <div class="product-meta">
+                    <span id="product-category" class="category-tag">Category</span>
+                    <div id="product-badges" class="badges"></div>
+                </div>
+                
+                <h1 id="product-name" class="detail-title">Tên Sản Phẩm</h1>
+                
+                <div class="detail-rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    <span>(5.0)</span>
+                </div>
+
+                <div id="product-price" class="detail-price">
+                    <!-- Price injected by JS -->
+                </div>
+
+                <p id="product-description" class="detail-description">
+                    Mô tả sản phẩm...
+                </p>
+
+                <div class="product-options">
+                    <div class="option-group">
+                        <label>Màu sắc:</label>
+                        <div class="color-options">
+                            <div class="color-option selected" style="background-color: #000;"></div>
+                            <div class="color-option" style="background-color: #fff; border: 1px solid #ddd;"></div>
+                            <div class="color-option" style="background-color: #1F2937;"></div>
+                        </div>
+                    </div>
+                    <div class="option-group">
+                        <label>Kích thước:</label>
+                        <div class="size-options">
+                            <div class="size-option selected">S</div>
+                            <div class="size-option">M</div>
+                            <div class="size-option">L</div>
+                            <div class="size-option">XL</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-actions">
+                    <div class="quantity-selector">
+                        <button onclick="updateDetailQty(-1)">-</button>
+                        <input type="number" id="qty-input" value="1" min="1">
+                        <button onclick="updateDetailQty(1)">+</button>
+                    </div>
+                    <button id="add-to-cart-btn" class="btn btn-primary btn-lg">Thêm Vào Giỏ</button>
+                </div>
+
+                <div class="product-extras">
+                    <div class="extra-item"><i class="fas fa-truck"></i> Miễn phí vận chuyển</div>
+                    <div class="extra-item"><i class="fas fa-undo"></i> Đổi trả trong 30 ngày</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h3>LUXE</h3>
+                <p>Thương hiệu thời trang cao cấp dành cho người Việt.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Liên Kết</h3>
+                <ul>
+                    <li><a href="#">Về chúng tôi</a></li>
+                    <li><a href="#">Chính sách đổi trả</a></li>
+                    <li><a href="#">Hướng dẫn chọn size</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Hỗ Trợ</h3>
+                <ul>
+                    <li><a href="#">Trung tâm trợ giúp</a></li>
+                    <li><a href="#">Liên hệ</a></li>
+                    <li><a href="#">Theo dõi đơn hàng</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Thanh Toán</h3>
+                <div class="payment-methods">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-paypal"></i>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 LUXE Store. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        function updateDetailQty(change) {
+            const input = document.getElementById('qty-input');
+            let val = parseInt(input.value) + change;
+            if (val < 1) val = 1;
+            input.value = val;
+        }
+    </script>
+</body>
+</html>

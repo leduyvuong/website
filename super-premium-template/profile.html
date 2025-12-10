@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tài Khoản Của Tôi - Super Premium Store</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html">LUXE</a>
+            </div>
+            
+            <nav class="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="index.html">Trang chủ</a></li>
+                    <li><a href="products.html">Sản phẩm</a></li>
+                    <li><a href="#">Khuyến mãi</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Liên hệ</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <div class="search-bar">
+                    <input type="text" placeholder="Tìm kiếm...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                <a href="cart.html" class="action-icon cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cart-count">0</span>
+                </a>
+                <a href="profile.html" class="action-icon user-icon active">
+                    <i class="fas fa-user"></i>
+                </a>
+                <div class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb section-padding bg-light">
+        <div class="container">
+            <a href="index.html">Trang chủ</a> / <span>Tài khoản của tôi</span>
+        </div>
+    </div>
+
+    <!-- Profile Dashboard -->
+    <section class="profile-section section-padding">
+        <div class="container profile-container">
+            <!-- Sidebar -->
+            <aside class="profile-sidebar">
+                <div class="user-summary">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="user-basic-info">
+                        <h3 id="sidebar-username">Nguyễn Văn A</h3>
+                        <p id="sidebar-email">nguyenvana@example.com</p>
+                    </div>
+                </div>
+                <nav class="profile-nav">
+                    <button class="profile-nav-item active" onclick="switchProfileTab('info')">
+                        <i class="fas fa-user-circle"></i> Thông tin tài khoản
+                    </button>
+                    <button class="profile-nav-item" onclick="switchProfileTab('orders')">
+                        <i class="fas fa-shopping-bag"></i> Lịch sử đơn hàng
+                    </button>
+                    <button class="profile-nav-item" onclick="switchProfileTab('addresses')">
+                        <i class="fas fa-map-marker-alt"></i> Sổ địa chỉ
+                    </button>
+                    <button class="profile-nav-item logout" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i> Đăng xuất
+                    </button>
+                </nav>
+            </aside>
+
+            <!-- Content Area -->
+            <main class="profile-content">
+                <!-- Tab: Profile Info -->
+                <div id="tab-info" class="profile-tab-content active">
+                    <h2 class="tab-title">Thông Tin Tài Khoản</h2>
+                    <form id="profile-form" class="profile-form">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Họ và tên</label>
+                                <input type="text" value="Nguyễn Văn A">
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" value="nguyenvana@example.com" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label>Số điện thoại</label>
+                                <input type="tel" value="0912345678">
+                            </div>
+                            <div class="form-group">
+                                <label>Ngày sinh</label>
+                                <input type="date">
+                            </div>
+                            <div class="form-group full">
+                                <label>Giới tính</label>
+                                <div class="gender-options">
+                                    <label><input type="radio" name="gender" checked> Nam</label>
+                                    <label><input type="radio" name="gender"> Nữ</label>
+                                    <label><input type="radio" name="gender"> Khác</label>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-4">Lưu Thay Đổi</button>
+                    </form>
+
+                    <h3 class="mt-4 mb-3">Đổi Mật Khẩu</h3>
+                    <form id="password-form" class="profile-form">
+                        <div class="form-group">
+                            <label>Mật khẩu hiện tại</label>
+                            <input type="password">
+                        </div>
+                        <div class="form-group">
+                            <label>Mật khẩu mới</label>
+                            <input type="password">
+                        </div>
+                        <div class="form-group">
+                            <label>Xác nhận mật khẩu mới</label>
+                            <input type="password">
+                        </div>
+                        <button type="submit" class="btn btn-outline mt-3">Đổi Mật Khẩu</button>
+                    </form>
+                </div>
+
+                <!-- Tab: Orders -->
+                <div id="tab-orders" class="profile-tab-content">
+                    <h2 class="tab-title">Lịch Sử Đơn Hàng</h2>
+                    <div class="orders-list" id="orders-list">
+                        <!-- Order items will be injected here -->
+                        <div class="empty-state">
+                            <i class="fas fa-box-open"></i>
+                            <p>Bạn chưa có đơn hàng nào.</p>
+                            <a href="products.html" class="btn btn-primary">Mua Sắm Ngay</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab: Addresses -->
+                <div id="tab-addresses" class="profile-tab-content">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="tab-title mb-0">Sổ Địa Chỉ</h2>
+                        <button class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> Thêm Địa Chỉ</button>
+                    </div>
+                    <div class="address-grid">
+                        <div class="address-card default">
+                            <div class="address-header">
+                                <span class="tag">Mặc định</span>
+                                <div class="address-actions">
+                                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                    <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+                            <h4>Nguyễn Văn A</h4>
+                            <p>0912345678</p>
+                            <p>123 Đường ABC, Phường XYZ</p>
+                            <p>Quận 1, TP. Hồ Chí Minh</p>
+                        </div>
+                        <div class="address-card">
+                            <div class="address-header">
+                                <span class="tag office">Văn phòng</span>
+                                <div class="address-actions">
+                                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                    <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+                            <h4>Nguyễn Văn A</h4>
+                            <p>0987654321</p>
+                            <p>456 Đường DEF, Tòa nhà GHI</p>
+                            <p>Quận Cầu Giấy, Hà Nội</p>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>LUXE</h3>
+                    <p>Thương hiệu thời trang cao cấp dành cho những người yêu thích sự sang trọng và tinh tế.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Mua Sắm</h3>
+                    <ul>
+                        <li><a href="#">Thời trang Nam</a></li>
+                        <li><a href="#">Thời trang Nữ</a></li>
+                        <li><a href="#">Phụ kiện</a></li>
+                        <li><a href="#">Bộ sưu tập mới</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Hỗ Trợ</h3>
+                    <ul>
+                        <li><a href="#">Chính sách đổi trả</a></li>
+                        <li><a href="#">Hướng dẫn chọn size</a></li>
+                        <li><a href="#">Phí vận chuyển</a></li>
+                        <li><a href="#">Câu hỏi thường gặp</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Liên Hệ</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Đường ABC, Quận 1, TP.HCM</li>
+                        <li><i class="fas fa-phone"></i> 1900 123 456</li>
+                        <li><i class="fas fa-envelope"></i> support@luxe.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 LUXE. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
